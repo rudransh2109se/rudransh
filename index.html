@@ -70,9 +70,11 @@
     }
 
     .subtitle {
-      font-size: 1.2em;
+      font-size: 1.3em;
       color: #cfd8dc;
       text-align: center;
+      min-height: 30px;
+      letter-spacing: 0.5px;
     }
 
     /* ===== SECTIONS ===== */
@@ -166,7 +168,9 @@
         <img src="profile.jpg" alt="Rudransh Agarwalla">
       </div>
       <h1>Rudransh Agarwalla</h1>
-      <div class="subtitle">ICSE Class X Student | Coding & Mathematics Enthusiast</div>
+      <div class="subtitle">
+        <span id="typing"></span>
+      </div>
     </header>
 
     <!-- ABOUT -->
@@ -200,24 +204,24 @@
         <div class="card">
           <h3>Mathematics Exploration Project</h3>
           <p>
-            A structured academic project focused on exploring advanced mathematical concepts, problem-solving techniques,
-            and logical reasoning through theoretical analysis and practical examples.
+            Academic project focused on exploring mathematical concepts, logical reasoning,
+            and structured problem-solving through theory and practical examples.
           </p>
         </div>
 
         <div class="card">
           <h3>School Programming Assignments</h3>
           <p>
-            Collection of Java and Python programs focusing on logic building, loops, arrays, conditionals,
-            and basic algorithmic thinking.
+            Collection of Java and Python programs focusing on logic building, loops, arrays,
+            conditionals, and algorithmic thinking.
           </p>
         </div>
 
         <div class="card">
           <h3>Practice Algorithms</h3>
           <p>
-            Basic implementations of sorting, searching, and mathematical algorithms to strengthen computational
-            thinking and efficiency.
+            Implementations of sorting, searching, and mathematical algorithms to strengthen
+            computational thinking and efficiency.
           </p>
         </div>
 
@@ -228,13 +232,12 @@
     <section>
       <h2>Contact</h2>
       <p>Email: 
-  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rudransh.techai@gmail.com" target="_blank">
-    rudransh.techai@gmail.com
-  </a>
-</p>
-
-      <p>GitHub: <a href="https://github.com/rudransh2109se">github.com/rudransh2109se</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/rudranshagarwalla">linkedin.com/in/rudranshagarwalla</a></p>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rudransh.techai@gmail.com" target="_blank">
+          rudransh.techai@gmail.com
+        </a>
+      </p>
+      <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
     </section>
 
     <footer>
@@ -242,6 +245,46 @@
     </footer>
 
   </div>
+
+  <!-- TYPING ANIMATION SCRIPT -->
+  <script>
+    const texts = [
+      "ICSE Class X Student",
+      "Coding Enthusiast",
+      "Mathematics Lover",
+      "Aspiring Engineer"
+    ];
+
+    let index = 0;
+    let charIndex = 0;
+    let currentText = "";
+    let isDeleting = false;
+
+    function typeEffect() {
+      const element = document.getElementById("typing");
+
+      if (!isDeleting && charIndex <= texts[index].length) {
+        currentText = texts[index].substring(0, charIndex++);
+        element.textContent = currentText;
+      } 
+      else if (isDeleting && charIndex >= 0) {
+        currentText = texts[index].substring(0, charIndex--);
+        element.textContent = currentText;
+      }
+
+      if (!isDeleting && charIndex === texts[index].length + 1) {
+        setTimeout(() => isDeleting = true, 1000);
+      } 
+      else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        index = (index + 1) % texts.length;
+      }
+
+      setTimeout(typeEffect, isDeleting ? 60 : 100);
+    }
+
+    typeEffect();
+  </script>
 
 </body>
 </html>
