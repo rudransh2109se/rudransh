@@ -118,11 +118,11 @@
     }
 
     /* ===== PROJECT CARDS ===== */
-    .grid {
+     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 25px;
-    }
+     }
 
     .card {
       background: #ffffff15;
@@ -130,6 +130,10 @@
       padding: 25px;
       transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
+    .card.featured {
+  grid-row: span 2;
+}
+
 
     .card:hover {
       transform: translateY(-8px) scale(1.02);
@@ -203,7 +207,7 @@
       <div class="grid">
 
         <!-- RUDI'S LAB PROJECT (CORRECTED DESCRIPTION) -->
-        <div class="card">
+        <div class="card featured">
           <h3>RUDI’s LAB – Interactive ICSE Statistics Lab</h3>
           <p>
             An interactive web-based mathematics lab designed for ICSE Class X Statistics.
